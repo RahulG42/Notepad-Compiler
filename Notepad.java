@@ -38,15 +38,17 @@ public class Notepad {
 		createMenuBar() ;
 		frame.setVisible( true ) ;
 	}
-	
+	/*create frame and set location,icon and size*/
 	public void createFrame()
 	{
 		frame=new JFrame("Notepad") ;
 		frame.setSize(800,800) ;
 		frame.setLocation(300, 00) ;
+		ImageIcon icon = new ImageIcon("D:\\Qspider_All\\Intership\\NotePad\\src\\Notepad\\notpad.jpg");
+		frame.setIconImage(icon.getImage());
 		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE) ;
 	}
-	
+	/*create textArea to write */
 	public void createTextField()
 	{
 		textArea=new JTextArea() ;
@@ -54,19 +56,22 @@ public class Notepad {
 		frame.add(textArea) ;
 	}
 	
+	/* create horizontal and vertical scroll bars*/
 	public void createScrollBars( )
 	{
 		JScrollPane scroll = new JScrollPane( textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED ) ;
 		frame.add(scroll) ;
 	}
-	
+
+	/*create menu bar*/
 	public void createMenuBar()
 	{
 		menubar =new JMenuBar() ;
 		createMenuBarOptions() ;
 		frame.setJMenuBar(menubar) ;
 	}
-	
+
+	/*creating multiple menubar options*/
 	public void createMenuBarOptions()
 	{
 		file=new JMenu("File") ;
@@ -114,7 +119,7 @@ public class Notepad {
 		menubar.add(theme) ;
 	}
 	
-	
+	/*create submenu for file menu options*/
 	public void createFileMenuItems()
 	{ 	
 		/*new option code */
@@ -336,7 +341,8 @@ public class Notepad {
 		file.addSeparator();
 		file.add(exit);
 	}
-	
+
+	/*if file save already then this method save is directly by reading global filename and path*/
 	public void writeDataToFile( String fileName , String path)
 	{
 		BufferedWriter bw = null ;
@@ -412,7 +418,8 @@ public class Notepad {
 		 langauge.add(itemCPP);
 		 langauge.add(itemHTML);
 	}
-	
+
+	/*set langauge or give boiler code for that langauge when user click on particular langauge */
 	public void setLanguage(String lang)
 	{
 		String path = "D:\\";
@@ -518,7 +525,9 @@ public class Notepad {
 		font.add(itemconsolas);
 		
 		sizeSubMenu= new JMenu("Size") ;
-		
+
+
+		/*adding multiple size options to select*/
 		JMenuItem size16 = new JMenuItem("16");
 		size16.addActionListener(new ActionListener() {
 			@Override
@@ -601,10 +610,10 @@ public class Notepad {
         sizeSubMenu.add(size32);
         sizeSubMenu.add(size34);
 
-		format.add(wrap);
-		format.addSeparator();
-		format.add(font);
-		format.add(sizeSubMenu);
+	format.add(wrap);
+	format.addSeparator();
+	format.add(font);
+	format.add(sizeSubMenu);
 	}
 	
 	/*set font size */
@@ -653,7 +662,8 @@ public class Notepad {
 		
 		theme.add(dark);
 		theme.add(light);
-		
+
+		/*if user select dark */
 		dark.addActionListener( new ActionListener()
 		{
 
@@ -669,7 +679,7 @@ public class Notepad {
 					textArea.setForeground(Color.WHITE) ;
 			}
 		});
-		
+		/*if user select light */
 		light.addActionListener( new ActionListener()
 		{
 			@Override
